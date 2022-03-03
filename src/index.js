@@ -7,11 +7,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import  'jquery';
 import  'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import Home from './home';
+import { Home } from './home';
+
 
 ReactDOM.render(
  
- <Home/>
+ <Home />
 ,
   document.getElementById('root')
 );

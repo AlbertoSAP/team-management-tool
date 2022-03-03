@@ -6,16 +6,22 @@ const headers = {
   "Contenet-Type": "application/json",
 };
 
-export const PostPerson = async (person) => {
+export const AddTeamMember = async (person) => {
   const body = JSON.stringify(person);
   await axios
     .post(`${apiUrl}/person.json`, body, headers)
-    .then((r) => {
+    .then((res) => {
     })
-    .catch((e) => {
-      console.error(e);
+    .catch((err) => {
+      console.error(err);
     });
 };
+
+export const FetchMember = async(id)=>{
+  const {data} = await axios.get(`${apiUrl}/person/${id}/.json`);
+  const {name, lastname,location,position} = data;
+  return { id,name, lastname,location,position};
+}
 
 export const FetchTeamMembers = async () => {
   const { data } = await axios.get(`${apiUrl}/person.json`);
@@ -23,4 +29,21 @@ export const FetchTeamMembers = async () => {
     const {name, lastname,location,position} = data[key];
     return {id: key, name, lastname, location, position};
   });
+};
+
+export const UpdateMember = async (person,id) => {
+  const body = JSON.stringify(person);
+  await axios
+    .put(`${apiUrl}/person/${id}/.json`, body, headers)
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+};
+
+export const DeleteTeamMember = async (id) => {
+  const { data } = await axios.delete(`${apiUrl}/person/${id}.json`);
+  return data;
 };
