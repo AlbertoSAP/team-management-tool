@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useForm } from "./Hooks/useForm";
 import { FetchTeamMembers, AddTeamMember, UpdateMember } from "./Service/AxiosService";
@@ -18,7 +18,7 @@ export const AddMember = ({ setPeopleList }) => {
 
   
 
-  const [enableSaveButton, setEnableSaveButton] = useState(false);
+
 
   useEffect(() => {
     if (selectedMemberValues.id && selectedMemberValues.id !== id ) {
@@ -53,7 +53,6 @@ export const AddMember = ({ setPeopleList }) => {
       }
     } else {
       Swal.fire("My Team App", "All Fields Are Required", "warning");
-      setEnableSaveButton(true);
     }
   };
 
