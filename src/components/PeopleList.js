@@ -39,7 +39,6 @@ export const PeopleList = ({ peopleList,setPeopleList }) => {
 
   const EditMember = async id =>{ 
   const memberInfo = await FetchMember(id);
-  console.log(memberInfo);
   setSelectedMemberValues(memberInfo);
   return memberInfo;
   };
