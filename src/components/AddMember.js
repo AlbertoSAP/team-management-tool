@@ -5,7 +5,7 @@ import { FetchTeamMembers, AddTeamMember, UpdateMember } from "./Service/AxiosSe
 import { DataContext } from "../context/DataProvider";
 
 export const AddMember = ({ setPeopleList }) => {
-  const { selectedMemberValues } = useContext(DataContext);  
+  const { selectedMemberValues,setSelectedMemberValues } = useContext(DataContext);  
 
   const [values, handleInputChange, clearFormFields, handleSetInput] = useForm({
     id: "",
@@ -15,7 +15,9 @@ export const AddMember = ({ setPeopleList }) => {
     location: "",
   });
   const { id, name, lastname, position, location } = values;
-  console.log('values',id, name, lastname, position, location);
+
+  
+
   const [enableSaveButton, setEnableSaveButton] = useState(false);
 
   useEffect(() => {
@@ -23,6 +25,8 @@ export const AddMember = ({ setPeopleList }) => {
       handleSetInput(selectedMemberValues);
     }
   }, [selectedMemberValues, handleSetInput,id]);
+
+
 
   const SaveMember = (e) => {
     e.preventDefault();
@@ -32,9 +36,9 @@ export const AddMember = ({ setPeopleList }) => {
         UpdateMember({name, lastname, position, location},id).then((res) => {
           FetchTeamMembers().then((result) => {
             setPeopleList(result);
+            setSelectedMemberValues({});
             clearFormFields();
-            Swal.fire("App", "Update!", "success");
-            
+            Swal.fire("App", "Update!", "success"); 
           });
         });
       } else {
@@ -44,7 +48,6 @@ export const AddMember = ({ setPeopleList }) => {
             setPeopleList(result); 
             clearFormFields();
             Swal.fire("App", "Save!", "success");
-           
           });
         });
       }
@@ -67,7 +70,7 @@ export const AddMember = ({ setPeopleList }) => {
                   onChange={handleInputChange}
                   type="text"
                   name="name"
-                  defaultValue={name}
+                  value={name}
                   id="name"
                   className="form-control"
                 />
@@ -78,7 +81,7 @@ export const AddMember = ({ setPeopleList }) => {
                   onChange={handleInputChange}
                   type="text"
                   name="lastname"
-                  defaultValue={lastname}
+                  value={lastname}
                   id="lastname"
                   className="form-control"
                 />
@@ -89,7 +92,7 @@ export const AddMember = ({ setPeopleList }) => {
                   onChange={handleInputChange}
                   type="text"
                   name="position"
-                  defaultValue={position}
+                  value={position}
                   id="position"
                   className="form-control"
                 />
@@ -100,7 +103,7 @@ export const AddMember = ({ setPeopleList }) => {
                   onChange={handleInputChange}
                   type="text"
                   name="location"
-                  defaultValue={location}
+                  value={location}
                   id="location"
                   className="form-control"
                 />

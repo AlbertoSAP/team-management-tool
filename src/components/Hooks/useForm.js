@@ -5,8 +5,9 @@ export const useForm = (initialState ={}) => {
 const [values, setValues] = useState(initialState);
 
 const clearFormFields = () => {
-        console.log(initialState);
-    setValues(initialState);
+    setValues({
+        ...values, ...initialState
+    })
 }
 
 const handleInputChange = ({target}) => {
@@ -17,8 +18,10 @@ const handleInputChange = ({target}) => {
 }
 
 const handleSetInput = (inputvalues) => {
-    setValues(
-        inputvalues
+    setValues({
+      ...values, ...inputvalues
+    }
+        
     );
 }
 
