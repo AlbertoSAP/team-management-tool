@@ -111,7 +111,6 @@ export const AddMember = ({ setPeopleList }) => {
               <div className="d-grid gap-2">
                 <button
                   className="btn btn-outline-info"
-                  disabled={enableSaveButton}
                   type="submit"
                 >
                  { id ? 'Update':'Add'}
