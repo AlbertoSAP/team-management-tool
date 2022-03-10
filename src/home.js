@@ -29,6 +29,7 @@ export const Home = () => {
             </div>
             <div className="col-6" >
             <a
+            id="addclick"
             class="btn btn-outline-info"
             data-bs-toggle="offcanvas"
             href="#offcanvasExample"

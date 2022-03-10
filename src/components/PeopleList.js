@@ -39,6 +39,7 @@ export const PeopleList = ({ peopleList,setPeopleList }) => {
 
   const EditMember = async id =>{ 
   const memberInfo = await FetchMember(id);
+  document.getElementById('addclick').click();
   setSelectedMemberValues(memberInfo);
   return memberInfo;
   };
