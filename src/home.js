@@ -18,18 +18,49 @@ export const Home = () => {
   }, [getPeopleList]);
 
   return (
-    <DataProvider payload="Bienvenido" >
+    <DataProvider payload="Bienvenido">
       <>
         <div className="container mt-5 text-white vh-100 mh-100">
-          <h1 className="text-center text-warning text-uppercase">
+          <div className="row justify-content-around align-items-center text-center">
+            <div className="col-6" >
+ <h1 className="text-warning text-uppercase">
             My Team Manager App
           </h1>
-          <hr />
-          <div className="row">
-            <div className="col-md-4">
-              <AddMember setPeopleList={setPeopleList} />
             </div>
-            <div className="col-md-8">
+            <div className="col-6" >
+            <a
+            class="btn btn-outline-info"
+            data-bs-toggle="offcanvas"
+            href="#offcanvasExample"
+            role="button"
+            aria-controls="offcanvasExample"
+          >
+            Add Team Member
+          </a>
+         </div>
+          </div>
+         
+          <hr />
+          <div
+                className="offcanvas offcanvas-start bg-dark"
+                tabindex="-1"
+                id="offcanvasExample"
+                aria-labelledby="offcanvasLabel"
+              >
+                <div className="offcanvas-header">
+                  <button
+                    type="button"
+                    className="btn-close text-reset text-white"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div className="offcanvas-body">
+                  <AddMember setPeopleList={setPeopleList} />
+                </div>
+              </div>
+          <div className="row"> 
+            <div className="col-12">
               <PeopleList
                 peopleList={peopleList}
                 setPeopleList={setPeopleList}

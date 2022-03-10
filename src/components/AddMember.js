@@ -16,17 +16,11 @@ export const AddMember = ({ setPeopleList }) => {
   });
   const { id, name, lastname, position, location } = values;
 
-  
-
-
-
   useEffect(() => {
     if (selectedMemberValues.id && selectedMemberValues.id !== id ) {
       handleSetInput(selectedMemberValues);
     }
   }, [selectedMemberValues, handleSetInput,id]);
-
-
 
   const SaveMember = (e) => {
     e.preventDefault();
@@ -38,7 +32,7 @@ export const AddMember = ({ setPeopleList }) => {
             setPeopleList(result);
             setSelectedMemberValues({});
             clearFormFields();
-            Swal.fire("App", "Update!", "success"); 
+            Swal.fire("Team Manager", "Member has been successfully updated!", "success"); 
           });
         });
       } else {
@@ -47,12 +41,12 @@ export const AddMember = ({ setPeopleList }) => {
           FetchTeamMembers().then((result) => {
             setPeopleList(result); 
             clearFormFields();
-            Swal.fire("App", "Save!", "success");
+            Swal.fire("Team Manager", "Member has been successfully added!", "success");
           });
         });
       }
     } else {
-      Swal.fire("My Team App", "All Fields Are Required", "warning");
+      Swal.fire("Team Manager", "All Fields Are Required", "warning");
     }
   };
 
@@ -71,7 +65,7 @@ export const AddMember = ({ setPeopleList }) => {
                   name="name"
                   value={name}
                   id="name"
-                  className="form-control"
+                  className="form-control fw-bolder"
                 />
               </div>
               <div className="mb-3">
@@ -82,7 +76,7 @@ export const AddMember = ({ setPeopleList }) => {
                   name="lastname"
                   value={lastname}
                   id="lastname"
-                  className="form-control"
+                  className="form-control fw-bolder"
                 />
               </div>
               <div className="mb-3">
@@ -93,7 +87,7 @@ export const AddMember = ({ setPeopleList }) => {
                   name="position"
                   value={position}
                   id="position"
-                  className="form-control"
+                  className="form-control fw-bolder"
                 />
               </div>
               <div className="mb-3">
@@ -104,7 +98,7 @@ export const AddMember = ({ setPeopleList }) => {
                   name="location"
                   value={location}
                   id="location"
-                  className="form-control"
+                  className="form-control fw-bolder"
                 />
               </div>
               <div className="d-grid gap-2">
